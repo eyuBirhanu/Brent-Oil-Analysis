@@ -1,8 +1,9 @@
 # 📈 Brent Oil Price Change Point Analysis
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Status](https://img.shields.io/badge/Status-Interim-orange)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Flask](https://img.shields.io/badge/Flask-2.3-black?style=for-the-badge&logo=flask&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
 
 **Author:** Eyu Birhanu  
 **Organization:** Birhan Energies  
@@ -10,87 +11,177 @@
 
 ---
 
+## 📖 Table of Contents
+- [Project Overview](#-project-overview)
+- [Key Features](#-key-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Getting Started](#-getting-started)
+- [Usage](#-usage)
+- [Analysis Results](#-analysis-results)
+- [Dashboard Preview](#-dashboard-preview)
+
+---
+
 ## 📌 Project Overview
 
-As a data scientist at **Birhan Energies**, this project focuses on analyzing how major political and economic events affect Brent oil prices. The oil market is volatile, and understanding the correlation between geopolitical events (like conflicts, sanctions, and OPEC decisions) and price fluctuations is crucial for investors and policymakers.
+This project, conducted at **Birhan Energies**, investigates the impact of major political and economic events on Brent oil prices. The oil market is notoriously volatile, and understanding the correlation between geopolitical events (such as conflicts, sanctions, and OPEC decisions) and price fluctuations is crucial for informed investment and policy decisions.
 
-The core objective is to use **Bayesian Change Point Analysis** to statistically detect when significant price shifts occurred and associate them with known historical events.
+We employ advanced statistical modeling, specifically **Bayesian Change Point detection**, to identify structural breaks in the price history and quantify the impact of significant events like the **COVID-19 pandemic** and the **Russia-Saudi Price War**.
 
-## 🎯 Objectives
+---
 
-1.  **Event Analysis**: Identify key geopolitical and economic events over the past decade.
-2.  **Change Point Detection**: Use PyMC (Bayesian inference) to statistically detect structural breaks in the time series data.
-3.  **Quantify Impact**: Measure the magnitude of price changes before and after specific events.
-4.  **Dashboarding**: Build an interactive dashboard (Flask + React) to visualize the results for stakeholders.
+## ✨ Key Features
+
+-   **Bayesian Change Point Detection**: Utilizes **PyMC** to statistically identify when and how the underlying price trend changed.
+-   **Interactive Dashboard**: A full-stack web application built with **React** (Frontend) and **Flask** (Backend) to visualize data and model results.
+-   **Event Impact Quantification**: Measures the percentage change in price associated with specific global events.
+-   **Data Analysis Pipeline**: Automated scripts for data cleaning, stationarity testing, and exploratory data analysis (EDA).
+
+---
+
+## 🛠 Tech Stack
+
+### Analysis & Data Science
+*   **Python**: Core programming language.
+*   **Pandas & NumPy**: Data manipulation and numerical computing.
+*   **PyMC**: Probabilistic programming for Bayesian modeling.
+*   **Matplotlib & Seaborn**: Static data visualization.
+*   **Statsmodels**: Statistical tests and models.
+
+### Backend
+*   **Flask**: Lightweight WSGI web application framework.
+*   **Flask-CORS**: Handling Cross-Origin Resource Sharing.
+
+### Frontend
+*   **React**: JavaScript library for building user interfaces.
+*   **Bootstrap**: CSS framework for responsive design.
+*   **Recharts**: Composable charting library for React.
+*   **Axios**: Promise-based HTTP client for the browser.
+
+---
 
 ## 📂 Project Structure
 
-The repository is organized as follows:
-
 ```bash
 Brent-Oil-Analysis/
-├── data/                   # Raw and processed data
-│   ├── BrentOilPrices.csv  # Historical daily oil prices (1987-2022)
-│   └── key_events.csv      # Compiled list of major geopolitical events
-├── notebooks/              # Jupyter notebooks for analysis
-│   ├── 01_interim_eda.ipynb      # Exploratory Data Analysis & Preprocessing
-│   └── 02_change_point_model.ipynb # Bayesian Change Point Detection (PyMC)
-├── src/                    # Source scripts for modular code
-├── dashboard/              # Interactive Dashboard
-│   ├── backend/            # Flask API
-│   └── frontend/           # React Frontend
-├── reports/                # Documentation and analysis reports
-│   └── Interim_Report.md   # Initial analysis plan and findings
-├── README.md               # Project documentation
-└── requirements.txt        # Python dependencies
+├── dashboard/                  # Full-stack Web Application
+│   ├── backend/                # Flask API
+│   │   └── app.py              # Main application entry point
+│   └── frontend/               # React Frontend
+│       ├── public/
+│       ├── src/                # React components and logic
+│       └── package.json        # Frontend dependencies
+├── data/                       # Data Storage
+│   ├── BrentOilPrices.csv      # Raw historical data
+│   └── model_results.json      # Output from Bayesian model
+├── notebooks/                  # Jupyter Notebooks for Analysis
+│   ├── 01_interim_eda.ipynb      # EDA & Stationarity tests
+│   └── 02_change_point_model.ipynb # PyMC Bayesian Model Implementation
+├── reports/                    # Documentation & Assets
+│   ├── Final_Report.md         # Detailed analysis report
+│   └── dashboard_screenshot.png # Dashboard preview image
+├── README.md                   # Project Documentation
+└── requirements.txt            # Python Dependencies
 ```
 
-## 📊 Data Description
+---
 
-The analysis uses historical Brent oil prices from **May 20, 1987** to **September 30, 2022**.
+## 🚀 Getting Started
 
-- **Date**: The recorded date of the price.
-- **Price**: Price in USD per barrel.
-- **Data Source**: U.S. Energy Information Administration (EIA) / Kaggle.
-
-## 🛠️ Methodology
-
-### 1. Exploratory Data Analysis (EDA)
-- Visualizing trends and volatility using Log Returns.
-- Testing for stationarity (ADF Test).
-
-### 2. Bayesian Modeling (PyMC)
-- Modeling the price as a Normal distribution with changing parameters.
-- Using MCMC (Markov Chain Monte Carlo) to sample the posterior distribution of the "switch point" ($\tau$).
-
-### 3. Event Correlation
-- Mapping detected change points to real-world events (e.g., 2008 Crisis, COVID-19, Russia-Ukraine War).
-
-## 🚀 How to Run the Analysis
+Follow these instructions to set up the project locally.
 
 ### Prerequisites
-- Python 3.8+
-- Anaconda or Miniconda (Recommended)
+-   **Python 3.8+**
+-   **Node.js & npm** (for the dashboard)
 
-### Installation
+### 1. Clone the Repository
+```bash
+git clone https://github.com/eyuBirhanu/Brent-Oil-Analysis.git
+cd Brent-Oil-Analysis
+```
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/eyubirhanu/Brent-Oil-Analysis.git
-   cd Brent-Oil-Analysis
-   ```
+### 2. Install Python Dependencies
+It is recommended to use a virtual environment.
+```bash
+# Create virtual environment (optional but recommended)
+python -m venv venv
+# Activate it (Windows)
+venv\Scripts\activate
+# Activate it (Mac/Linux)
+source venv/bin/activate
 
-2. **Install dependencies:**
-   ```bash
-   pip install pandas numpy matplotlib seaborn pymc arviz flask
-   ```
+# Install requirements
+pip install -r requirements.txt
+```
 
-3. **Run the EDA Notebook:**
-   - Open `notebooks/01_interim_eda.ipynb` in Jupyter Lab or VS Code.
-   - Run all cells to see the initial analysis.
+### 3. Install Frontend Dependencies
+```bash
+cd dashboard/frontend
+npm install
+```
 
-## 📈 Key Findings (Interim)
+---
 
-- The time series is **non-stationary** (it has a trend).
-- **High volatility clusters** are observed around 2008 (Financial Crisis) and 2020 (COVID-19 Pandemic).
-- Preliminary analysis suggests that major price shifts align with global economic shocks rather than minor policy changes.
+## 🖥 Usage
+
+### Running the Analysis (Optional)
+If you wish to re-run the Bayesian model and generate new results:
+1.  Navigate to the `notebooks/` directory.
+2.  Open `02_change_point_model.ipynb` in Jupyter Notebook or VS Code.
+3.  Run all cells. The results will be saved to `data/model_results.json`.
+
+### Launching the Dashboard
+
+You will need two terminal windows running simultaneously.
+
+**Terminal 1: Start the Flask Backend**
+```bash
+cd dashboard/backend
+python app.py
+# The API will be available at http://127.0.0.1:5000
+```
+
+**Terminal 2: Start the React Frontend**
+```bash
+cd dashboard/frontend
+npm start
+# The dashboard will automatically open at http://localhost:3000
+```
+
+---
+
+## 📊 Analysis Results
+
+Our Bayesian analysis focused on the volatility during the **2019–2021** period.
+
+*   **Identified Change Point**: **March 2020 (Approx. March 9th)**
+*   **Trigger Event**: This coincides with the collapse of the OPEC+ agreement and the onset of global COVID-19 lockdowns.
+*   **Market Impact**:
+    *   **Average Price Before**: ~$65.00
+    *   **Average Price After**: ~$40.00
+    *   **Statistical Significance**: The model confirms a structural break resulting in a **~38% decrease** in the mean price level with high confidence.
+
+---
+
+## 📸 Dashboard Preview
+
+![Dashboard Screenshot](reports/dashboard_screenshot.png)
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+1.  Fork the repository.
+2.  Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
+
+---
+
+## 📝 License
+
+**Birhan Energies - Confidential Assessment**  
+All rights reserved or as per organizational policy.
