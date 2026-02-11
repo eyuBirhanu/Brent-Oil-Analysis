@@ -166,7 +166,7 @@ Our Bayesian analysis focused on the volatility during the **2019–2021** perio
 
 ## 📸 Dashboard Preview
 
-![Dashboard Screenshot](reports/dashboard_screenshot.png)
+![Dashboard Screenshot](reports/DASHBOARD-PREVIEW.png)
 
 ---
 
